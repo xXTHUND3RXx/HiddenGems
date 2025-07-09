@@ -14,93 +14,93 @@ interface Game {
   release_date: string;
 }
 
-interface GenresResponse {
-  genres: string[];
+interface PlatformsResponse {
+  platforms: string[];
 }
 
-interface GamesByGenreResponse {
-  Genres: Game[];
+interface GamesByPlatformResponse {
+  platforms: Game[];
 }
 
-export default function Genero() {
-  const [genres, setGenres] = useState<string[]>([]);
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+export default function Plataforma() {
+  const [platforms, setPlatforms] = useState<string[]>([]);
+  const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Buscar todos os gêneros
+  // Buscar todas as plataformas
   useEffect(() => {
-    async function fetchGenres() {
+    async function fetchPlatforms() {
       try {
-        const res = await axios.get<GenresResponse>(
-          "https://hiddengems-api.onrender.com/games/genres"
+        const res = await axios.get<PlatformsResponse>(
+          "https://hiddengems-api.onrender.com/games/platforms"
         );
-        setGenres(res.data.genres);
+        setPlatforms(res.data.platforms);
       } catch (error) {
-        console.error("Erro ao buscar gêneros:", error);
+        console.error("Erro ao buscar plataformas:", error);
       }
     }
 
-    fetchGenres();
+    fetchPlatforms();
   }, []);
 
-  // Buscar jogos do gênero selecionado
+  // Buscar jogos da plataforma selecionada
   useEffect(() => {
-    if (!selectedGenre) {
+    if (!selectedPlatform) {
       setGames([]);
       return;
     }
 
     setLoading(true);
 
-    async function fetchGamesByGenre() {
+    async function fetchGamesByPlatform() {
       try {
-        const res = await axios.get<GamesByGenreResponse>(
-          `https://hiddengems-api.onrender.com/games/genres/${encodeURIComponent(
-            selectedGenre!
+        const res = await axios.get<GamesByPlatformResponse>(
+          `https://hiddengems-api.onrender.com/games/platforms/${encodeURIComponent(
+            selectedPlatform!
           )}`
         );
-        setGames(res.data.Genres); // <-- Corrigido para acessar o array correto
+        setGames(res.data.platforms);
       } catch (error) {
-        console.error("Erro ao buscar jogos por gênero:", error);
+        console.error("Erro ao buscar jogos por plataforma:", error);
         setGames([]);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchGamesByGenre();
-  }, [selectedGenre]);
+    fetchGamesByPlatform();
+  }, [selectedPlatform]);
 
   return (
     <section className="p-4 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center">
-        Filtrar Jogos por Gênero
+        Filtrar Jogos por Plataforma
       </h2>
 
       <div className="flex flex-wrap gap-3 justify-center mb-8">
-        {genres.map((genre) => (
+        {platforms.map((platform) => (
           <button
-            key={genre}
-            onClick={() => setSelectedGenre(genre)}
+            key={platform}
+            onClick={() => setSelectedPlatform(platform)}
             className={`px-4 py-2 rounded-full border ${
-              selectedGenre === genre
+              selectedPlatform === platform
                 ? "bg-[#EC021A] text-white border-[#EC021A]"
                 : "bg-white text-[#EC021A] border-[#EC021A] hover:bg-[#EC021A] hover:text-white transition-colors"
             }`}
           >
-            {genre}
+            {platform}
           </button>
         ))}
       </div>
 
       {loading && <p className="text-center">Carregando jogos...</p>}
 
-      {!loading && selectedGenre && (
+      {!loading && selectedPlatform && (
         <>
           <h3 className="text-xl font-semibold mb-4 text-center">
-            Jogos no gênero:{" "}
-            <span className="text-[#EC021A]">{selectedGenre}</span>
+            Jogos na plataforma:{" "}
+            <span className="text-[#EC021A]">{selectedPlatform}</span>
           </h3>
 
           {games.length === 0 ? (
