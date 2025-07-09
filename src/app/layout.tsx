@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from 'next/font/google'
 import "./globals.css";
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        style={{backgroundColor: '#060706'}}  className={`flex w-full ${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{backgroundColor: '#060706'}}  className={`flex flex-col gap-6 w-full ${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
       >
         {children}
       </body>

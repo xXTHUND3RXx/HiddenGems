@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header
       style={{ backgroundColor: "#090908" }}
-      className="w-full h-auto flex flex-col items-center font-(family-name:--roboto)"
+      className="w-full h-auto flex flex-col items-center"
     >
       <div className="flex items-center justify-betwenn gap-x-300">
         <div>
