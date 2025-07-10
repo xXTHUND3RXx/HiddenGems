@@ -23,7 +23,7 @@ export default async function Card() {
   const data = api.data.games;
 
   return (
-    <section className="w-full flex flex-col items-center bg-black py-4">
+    <section id="games" className="w-full flex flex-col items-center bg-black py-4">
       {/* Título fixo e centralizado na tela */}
       <div className="sticky top-0 z-20 bg-black w-full py-4">
         <h1 className="text-center text-5xl text-white">
