@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-
 interface GamesProps {
   id: number;
   name: string;
@@ -21,24 +20,36 @@ export default async function Card() {
   const api = await axios.get<ApiResponse>(
     "https://hiddengems-api.onrender.com/games"
   );
-  const data = api.data.games
-
-  // console.log(data);
-
-  // Adicionar botao para levar o jogo clicado para a pagina da steam
+  const data = api.data.games;
 
   return (
-    <section className="flex flex-col  gap-4 w-full h-140 overflow-x-scroll">
-      <span>
-        <h1 className="text-center text-5xl">Jogos do catálogo</h1>
-      </span>
-      <div className="flex ">
-        {data.map((game) => (
-          <div key={game.id} className="flex flex-col w-68 text-[#EC021A] text-2xl">
-            <h1 className="w-[20ch]">{game.name}</h1>
-            <div className="w-full "><img src={game.image} alt="imagem do game"></img></div>
-          </div>
-        ))}
+    <section className="w-full flex flex-col items-center bg-black py-4">
+      {/* Título fixo e centralizado na tela */}
+      <div className="sticky top-0 z-20 bg-black w-full py-4">
+        <h1 className="text-center text-5xl text-white">
+          Jogos do catálogo
+        </h1>
+      </div>
+
+      {/* Scroll horizontal separado */}
+      <div className="w-full overflow-x-auto px-6 pb-6">
+        <div className="flex gap-6 w-max">
+          {data.map((game) => (
+            <div
+              key={game.id}
+              className="flex-shrink-0 flex flex-col w-52 min-w-52 text-[#EC021A]"
+            >
+              <div className="text-center text-base font-semibold break-words mb-2">
+                {game.name}
+              </div>
+              <img
+                src={game.image}
+                alt={`Imagem do jogo ${game.name}`}
+                className="w-full h-64 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

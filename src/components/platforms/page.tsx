@@ -73,7 +73,7 @@ export default function Plataforma() {
   }, [selectedPlatform]);
 
   return (
-    <section className="p-4 max-w-6xl mx-auto">
+    <section id="plataformas" className="p-4 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center">
         Filtrar Jogos por Plataforma
       </h2>

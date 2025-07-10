@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --roboto: 'Roboto", sans-serif'
+  --roboto: 'Roboto', sans-serif;
 }
 
 @theme inline {
@@ -20,6 +20,10 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

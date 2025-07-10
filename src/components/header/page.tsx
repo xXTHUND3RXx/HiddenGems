@@ -4,8 +4,7 @@ import Image from "next/image";
 export default function Header() {
   return (
     <header
-      style={{ backgroundColor: "#090908" }}
-      className="w-full h-auto flex flex-col items-center"
+      className="bg-[#090908] w-full h-auto flex flex-col items-center pb-8"
     >
       <div className="flex items-center justify-betwenn gap-x-300">
         <div>
@@ -18,15 +17,17 @@ export default function Header() {
         </div>
         <nav>
           <ul style={{ color: "#EC021A" }} className="flex gap-4">
-            <button className="cursor-pointer">
-              <li>Games</li>
-            </button>
-            <button className="cursor-pointer">
-              <li>Generos</li>
-            </button>
-            <button className="cursor-pointer">
-              <li>Plataformas</li>
-            </button>
+            <li>
+              <a href="#games">Games</a>
+            </li>
+
+            <li>
+              <a href="#generos">Generos</a>
+            </li>
+
+            <li>
+              <a href="#plataformas">Plataformas</a>
+            </li>
           </ul>
         </nav>
       </div>

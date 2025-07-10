@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        style={{backgroundColor: '#060706'}}  className={`flex flex-col gap-10 w-full ${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
+        className={`bg-[#060706] flex flex-col w-full ${geistSans.variable} ${geistMono.variable} ${roboto.className} antialiased`}
       >
         {children}
       </body>

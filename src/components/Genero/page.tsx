@@ -73,9 +73,9 @@ export default function Genero() {
   }, [selectedGenre]);
 
   return (
-    <section className="p-4 max-w-6xl mx-auto">
+    <section id="generos" className="p-4 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold mb-6 text-center">
-        Filtrar Jogos por Gênero
+        Escolha o gênero
       </h2>
 
       <div className="flex flex-wrap gap-3 justify-center mb-8">
