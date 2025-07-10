@@ -1,6 +1,6 @@
 # Hidden Gems
 
-O projeto Hidden Gems é uma landing page feita com a API [Hidden Gems](https://github.com/xXTHUND3RXx/HiddenGems-API). O objetivo desse projeto é dar mais visibilidade a jogos com baixo orçamento e feitos por equipes pequenas ou por uma pessoa.
+O projeto Hidden Gems é um catálogo de jogos feito como uma landing page consumindo com a API [Hidden Gems](https://github.com/xXTHUND3RXx/HiddenGems-API). O objetivo desse projeto é dar mais visibilidade a jogos com baixo orçamento e desenvolvidos por equipes pequenas ou por uma pessoa.
 
 # 🛠 Tecnologias utilizadas
 
