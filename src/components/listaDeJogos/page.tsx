@@ -19,7 +19,7 @@ export default function ListaDeJogos({apiUrl}: { apiUrl: string}) {
       {/* Scroll horizontal separado */}
       <div className="w-full overflow-x-auto px-6 pb-6">
         <div className="flex gap-6 w-max">
-          {games.map((game) => (
+          {games && games.map((game) => (
             <div
               key={game.id}
               className="flex-shrink-0 flex flex-col w-52 min-w-52 text-[#EC021A]"
