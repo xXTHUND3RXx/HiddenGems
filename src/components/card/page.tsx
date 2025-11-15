@@ -1,26 +1,8 @@
 import React from "react";
-import axios from "axios";
+import { useFetch } from "@/hooks/useFetch";
 
-interface GamesProps {
-  id: number;
-  name: string;
-  genres: string[];
-  image: string;
-  developer: string;
-  publisher: string;
-  plataforms: string[];
-  release_date: string;
-}
-
-interface ApiResponse {
-  games: GamesProps[];
-}
-
-export default async function Card() {
-  const api = await axios.get<ApiResponse>(
-    "https://hiddengems-api.onrender.com/games"
-  );
-  const data = api.data.games;
+export default function Card() {
+  const { data: games, loading, error} = useFetch('https://hiddengems-api.onrender.com/games')
 
   return (
     <section id="games" className="w-full flex flex-col items-center bg-black py-4">
@@ -34,7 +16,7 @@ export default async function Card() {
       {/* Scroll horizontal separado */}
       <div className="w-full overflow-x-auto px-6 pb-6">
         <div className="flex gap-6 w-max">
-          {data.map((game) => (
+          {games.map((game) => (
             <div
               key={game.id}
               className="flex-shrink-0 flex flex-col w-52 min-w-52 text-[#EC021A]"
