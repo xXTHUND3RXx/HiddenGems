@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 interface Game {
   id: number;
@@ -112,10 +113,12 @@ export default function Genero() {
                   key={game.id}
                   className="border rounded-lg p-4 flex flex-col items-center"
                 >
-                  <img
+                  <Image
                     src={game.image}
-                    alt={game.name}
-                    className="w-48 h-auto rounded-md mb-3"
+                    width={500}
+                    height={500}
+                    alt={`Imagem do jogo ${game.name}`}
+                    unoptimized={true}
                   />
                   <h4 className="text-lg font-bold text-center">{game.name}</h4>
                   <p className="text-sm text-gray-600">

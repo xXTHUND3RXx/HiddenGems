@@ -1,4 +1,3 @@
-import About from "@/components/about/page";
 import Header from "@/components/header/page";
 import Genero from "@/components/Genero/page";
 import Plataforma from "@/components/platforms/page";

@@ -7,6 +7,7 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function CarrosselGames() {
   const {
@@ -27,7 +28,9 @@ export default function CarrosselGames() {
 
   return (
     <div className="relative w-full px-12">
-      <h1 className="mb-5 titulo-com-sublinhado-personalizado">Jogos do Catálogo</h1>
+      <h1 className="mb-5 titulo-com-sublinhado-personalizado">
+        Jogos do Catálogo
+      </h1>
       <Swiper
         modules={[Navigation, Autoplay, Pagination]} // Ativa o módulo de navegação (botões)
         navigation={{
@@ -44,20 +47,23 @@ export default function CarrosselGames() {
         }}
         loop={true}
       >
-        {games && games.map((game: Game) => (
-          <SwiperSlide key={game.id}>
-            <div className="flex flex-col w-full text-[#EC021A]">
-              <div className="text-center text-base font-semibold break-words mb-2">
-                {game.name}
+        {games &&
+          games.map((game: Game) => (
+            <SwiperSlide key={game.id}>
+              <div className="flex flex-col w-full text-[#EC021A]">
+                <div className="text-center text-base font-semibold break-words mb-2">
+                  {game.name}
+                </div>
+                <Image
+                  src={game.image}
+                  width={500}
+                  height={500}
+                  alt={`Imagem do jogo ${game.name}`}
+                  unoptimized={true}
+                />
               </div>
-              <img
-                src={game.image}
-                alt={`Imagem do jogo ${game.name}`}
-                className="w-full h-64 object-cover rounded-lg shadow-lg"
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))}
       </Swiper>
 
       <button
@@ -65,7 +71,6 @@ export default function CarrosselGames() {
         className="meu-botao-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 
                        p-2 rounded-full bg-white/10 hover:bg-red-500 text-red-500 hover:text-white transition-all"
       >
-
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -87,7 +92,6 @@ export default function CarrosselGames() {
         className="meu-botao-next absolute right-2 top-1/2 -translate-y-1/2 z-10
                        p-2 rounded-full bg-white/10 hover:bg-red-500 text-red-500 hover:text-white transition-all"
       >
-       
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
