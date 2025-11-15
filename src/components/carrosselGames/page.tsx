@@ -44,7 +44,7 @@ export default function CarrosselGames() {
         }}
         loop={true}
       >
-        {games.map((game: Game) => (
+        {games && games.map((game: Game) => (
           <SwiperSlide key={game.id}>
             <div className="flex flex-col w-full text-[#EC021A]">
               <div className="text-center text-base font-semibold break-words mb-2">
