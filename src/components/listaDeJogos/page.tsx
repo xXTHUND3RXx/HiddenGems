@@ -1,18 +1,21 @@
+'use client';
+
 import React from "react";
 import { useFetch } from "@/hooks/useFetch";
 
-export default function Card() {
-  const { data: games, loading, error} = useFetch('https://hiddengems-api.onrender.com/games')
+export default function ListaDeJogos({apiUrl}: { apiUrl: string}) {
+  const { data: games, loading, error} = useFetch(apiUrl)
+
+  if(loading) {
+    return <p>Carregando cards...</p>;
+  }
+
+  if (error) {
+    return <p>Erro ao carregar os dados.</p>
+  }
 
   return (
     <section id="games" className="w-full flex flex-col items-center bg-black py-4">
-      {/* Título fixo e centralizado na tela */}
-      <div className="sticky top-0 z-20 bg-black w-full py-4">
-        <h1 className="text-center text-5xl text-white">
-          Jogos do catálogo
-        </h1>
-      </div>
-
       {/* Scroll horizontal separado */}
       <div className="w-full overflow-x-auto px-6 pb-6">
         <div className="flex gap-6 w-max">

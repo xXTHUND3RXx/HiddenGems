@@ -28,10 +28,61 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.titulo-com-sublinhado-personalizado {
+  position: relative; /* Importante para posicionar o ::after */
+  display: inline-block; /* Para o :after não ocupar a largura toda */
+  padding-bottom: 5px; /* Espaçamento entre o texto e a linha */
+  font-size: 2.25rem;
+}
+
+.titulo-com-sublinhado-personalizado::after {
+  content: ''; /* Conteúdo vazio para o pseudo-elemento */
+  position: absolute;
+  left: 2;          /* Alinha a linha à esquerda do texto */
+  bottom: -7;        /* Alinha a linha à parte de baixo */
+  width: 70px;      /* <-- Largura da sua linha (ajuste aqui) */
+  height: 3px;      /* <-- Espessura da sua linha (ajuste aqui) */
+  background-color: var(--vermelho-suave); /* Cor da linha */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  /* Seu estilo de fundo (ex: transparente ou leve) */
+  background-color: rgba(255, 255, 255, 0.1);
+  
+  /* COR BASE DA SETA (será herdada pelo ::after) */
+  color: var(--vermelho-suave); 
+  
+  /* Estilos do corpo do botão */
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  
+  /* Transição suave para AMBAS as propriedades */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 2. ESTILO :HOVER DO BOTÃO (Fundo E Seta) */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  /* Fundo muda no hover */
+  background-color: var(--vermelho-suave);
+  
+  /* COR DA SETA muda no hover (será herdada) */
+  color: white; 
+}
+
+/* 3. Ajuste o TAMANHO da seta (isso pode ficar separado) */
+/* Isso você não precisa mudar */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5rem; /* Ajusta o tamanho (o padrão é enorme) */
 }

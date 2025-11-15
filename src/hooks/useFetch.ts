@@ -1,5 +1,8 @@
+'use client';
+
 import { useState, useEffect } from "react";
 import { Game } from "@/types/game";
+import { ApiGamesResponse } from "@/types/apiGamesResponse";
 
 export function useFetch(url: string) {
     const [data, setData] = useState<Game[] | null>(null);
@@ -17,8 +20,8 @@ export function useFetch(url: string) {
                 throw new Error(`Erro ao buscar: ${res.statusText}`);
             }
         
-            const json: Game[] = await res.json();
-            setData(json);
+            const json: ApiGamesResponse = await res.json();
+            setData(json.games);
         } catch (err: unknown) {
             if(err instanceof Error) {
                 setError(err);

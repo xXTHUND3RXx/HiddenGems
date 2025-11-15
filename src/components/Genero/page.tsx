@@ -73,10 +73,10 @@ export default function Genero() {
   }, [selectedGenre]);
 
   return (
-    <section id="generos" className="p-4 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center">
-        Escolha o gênero
-      </h2>
+    <section id="generos" className="">
+      <h1 className="mb-4 titulo-com-sublinhado-personalizado">
+        Explore por Gênero
+      </h1>
 
       <div className="flex flex-wrap gap-3 justify-center mb-8">
         {genres.map((genre) => (
